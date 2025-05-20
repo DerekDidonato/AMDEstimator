@@ -1,0 +1,29 @@
+
+<UserControl x:Class="AMDEstimator.Views.TakeoffView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Toolbar -->
+        <ToolBarTray Grid.Row="0">
+            <ToolBar>
+                <Button Content="Area Takeoff" Command="{Binding StartAreaTakeoffCommand}"/>
+                <Button Content="Linear Takeoff" Command="{Binding StartLinearTakeoffCommand}"/>
+                <Button Content="Undo" Command="{Binding UndoCommand}"/>
+                <Button Content="Clear" Command="{Binding ClearCommand}"/>
+            </ToolBar>
+        </ToolBarTray>
+
+        <!-- InkCanvas for drawing takeoffs -->
+        <InkCanvas x:Name="TakeoffCanvas" Grid.Row="1" Background="White"
+                   EditingMode="Ink" DefaultDrawingAttributes="{Binding DrawingAttributes}"/>
+    </Grid>
+</UserControl>

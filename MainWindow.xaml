@@ -1,0 +1,142 @@
+
+<Window x:Class="AMDEstimator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:r="clr-namespace:System.Windows.Controls.Ribbon;assembly=System.Windows.Controls.Ribbon"
+        Title="AMD Estimator" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Ribbon Menu -->
+        <r:Ribbon x:Name="Ribbon" Grid.Row="0">
+            <!-- Application Menu -->
+            <r:Ribbon.ApplicationMenu>
+                <r:RibbonApplicationMenu>
+                    <r:RibbonApplicationMenuItem Header="New Job" Command="{Binding NewJobCommand}"/>
+                    <r:RibbonApplicationMenuItem Header="Open Job" Command="{Binding OpenJobCommand}"/>
+                    <r:RibbonApplicationMenuItem Header="Save Job" Command="{Binding SaveJobCommand}"/>
+                    <r:RibbonApplicationMenuItem Header="Export to Excel" Command="{Binding ExportToExcelCommand}"/>
+                    <r:RibbonApplicationMenuItem Header="Exit" Command="{Binding ExitCommand}"/>
+                </r:RibbonApplicationMenu>
+            </r:Ribbon.ApplicationMenu>
+
+            <!-- Ribbon Tabs -->
+            <r:RibbonTab Header="Dashboard" Tag="Dashboard"/>
+            <r:RibbonTab Header="Home" Tag="AMDEstimator">
+                <r:RibbonGroup Header="Jobs">
+                    <r:RibbonButton Label="New Job" Command="{Binding NewJobCommand}"/>
+                    <r:RibbonButton Label="Open Job" Command="{Binding OpenJobCommand}"/>
+                    <r:RibbonButton Label="Save Job" Command="{Binding SaveJobCommand}"/>
+                </r:RibbonGroup>
+                <r:RibbonGroup Header="Takeoffs">
+                    <r:RibbonButton Label="Add Takeoff" Command="{Binding AddTakeoffCommand}"/>
+                    <r:RibbonButton Label="Area Takeoff" Command="{Binding AreaTakeoffCommand}"/>
+                    <r:RibbonButton Label="Linear Takeoff" Command="{Binding LinearTakeoffCommand}"/>
+                </r:RibbonGroup>
+                <r:RibbonGroup Header="Estimating">
+                    <r:RibbonButton Label="Generate Estimate" Command="{Binding GenerateEstimateCommand}"/>
+                    <r:RibbonButton Label="Update Prices" Command="{Binding UpdatePricesCommand}"/>
+                    <r:RibbonButton Label="Generate Schedule" Command="{Binding GenerateScheduleCommand}"/>
+                    <r:RibbonButton Label="Export to Excel" Command="{Binding ExportToExcelCommand}"/>
+                </r:RibbonGroup>
+            </r:RibbonTab>
+            <r:RibbonTab Header="Page" Tag="Page">
+                <r:RibbonGroup Header="Create Job">
+                    <r:RibbonButton Label="New Job" Command="{Binding NewJobCommand}"/>
+                </r:RibbonGroup>
+            </r:RibbonTab>
+            <r:RibbonTab Header="Estimating" Tag="Estimating">
+                <r:RibbonGroup Header="Categories">
+                    <r:RibbonButton Label="Add Category" Command="{Binding AddCategoryCommand}"/>
+                </r:RibbonGroup>
+                <r:RibbonGroup Header="Items">
+                    <r:RibbonButton Label="Add Item" Command="{Binding AddItemCommand}"/>
+                    <r:RibbonButton Label="Delete Selected" Command="{Binding DeleteSelectedCommand}"/>
+                </r:RibbonGroup>
+                <r:RibbonGroup Header="Calculations">
+                    <r:RibbonButton Label="Apply Formula" Command="{Binding ApplyFormulaCommand}"/>
+                    <r:RibbonButton Label="Calculate Totals" Command="{Binding CalculateTotalsCommand}"/>
+                    <r:RibbonButton Label="Export to Excel" Command="{Binding ExportToExcelCommand}"/>
+                    <r:RibbonButton Label="Update Prices" Command="{Binding UpdatePricesCommand}"/>
+                </r:RibbonGroup>
+            </r:RibbonTab>
+            <r:RibbonTab Header="Tools" Tag="Tools">
+                <r:RibbonGroup Header="Tools">
+                    <r:RibbonButton Label="Calculate Cost" Command="{Binding CalculateCostCommand}"/>
+                    <r:RibbonButton Label="Convert Units" Command="{Binding ConvertUnitsCommand}"/>
+                    <r:RibbonButton Label="View PDF" Command="{Binding ViewPDFCommand}"/>
+                </r:RibbonGroup>
+            </r:RibbonTab>
+            <r:RibbonTab Header="View" Tag="View">
+                <r:RibbonGroup Header="View Options">
+                    <r:RibbonButton Label="Zoom In" Command="{Binding ZoomInCommand}"/>
+                    <r:RibbonButton Label="Zoom Out" Command="{Binding ZoomOutCommand}"/>
+                    <r:RibbonButton Label="Pan" Command="{Binding PanCommand}"/>
+                    <r:RibbonButton Label="Toggle Layers" Command="{Binding ToggleLayersCommand}"/>
+                    <r:RibbonButton Label="Toggle Grid" Command="{Binding ToggleGridCommand}"/>
+                </r:RibbonGroup>
+            </r:RibbonTab>
+            <r:RibbonTab Header="Lists" Tag="Lists">
+                <r:RibbonGroup Header="Materials">
+                    <r:RibbonButton Label="Add Material" Command="{Binding AddMaterialCommand}"/>
+                    <r:RibbonButton Label="Delete Material" Command="{Binding DeleteMaterialCommand}"/>
+                </r:RibbonGroup>
+                <r:RibbonGroup Header="Labor Rates">
+                    <r:RibbonButton Label="Add Labor Rate" Command="{Binding AddLaborRateCommand}"/>
+                    <r:RibbonButton Label="Delete Labor Rate" Command="{Binding DeleteLaborRateCommand}"/>
+                </r:RibbonGroup>
+                <r:RibbonGroup Header="Templates">
+                    <r:RibbonButton Label="Add Template" Command="{Binding AddTemplateCommand}"/>
+                    <r:RibbonButton Label="Delete Template" Command="{Binding DeleteTemplateCommand}"/>
+                </r:RibbonGroup>
+            </r:RibbonTab>
+            <r:RibbonTab Header="Templates" Tag="Templates">
+                <r:RibbonGroup Header="Assemblies">
+                    <r:RibbonButton Label="Add Assembly" Command="{Binding AddAssemblyCommand}"/>
+                    <r:RibbonButton Label="Delete Assembly" Command="{Binding DeleteAssemblyCommand}"/>
+                </r:RibbonGroup>
+                <r:RibbonGroup Header="Parts Lists">
+                    <r:RibbonButton Label="Add Parts List" Command="{Binding AddPartsListCommand}"/>
+                    <r:RibbonButton Label="Delete Parts List" Command="{Binding DeletePartsListCommand}"/>
+                </r:RibbonGroup>
+                <r:RibbonGroup Header="Templates">
+                    <r:RibbonButton Label="Add Template" Command="{Binding AddTemplateCommand}"/>
+                    <r:RibbonButton Label="Delete Template" Command="{Binding DeleteTemplateCommand}"/>
+                </r:RibbonGroup>
+            </r:RibbonTab>
+            <r:RibbonTab Header="Settings" Tag="Settings">
+                <r:RibbonGroup Header="Preferences">
+                    <r:RibbonButton Label="Save Preferences" Command="{Binding SavePreferencesCommand}"/>
+                    <r:RibbonButton Label="Save User Settings" Command="{Binding SaveUserSettingsCommand}"/>
+                </r:RibbonGroup>
+                <r:RibbonGroup Header="Data">
+                    <r:RibbonButton Label="Import Data" Command="{Binding ImportDataCommand}"/>
+                    <r:RibbonButton Label="Export Data" Command="{Binding ExportDataCommand}"/>
+                </r:RibbonGroup>
+            </r:RibbonTab>
+            <r:RibbonTab Header="Reports" Tag="Reports">
+                <r:RibbonGroup Header="Reports">
+                    <r:RibbonButton Label="Generate Report" Command="{Binding GenerateReportCommand}"/>
+                    <r:RibbonButton Label="Export to PDF" Command="{Binding ExportToPDFCommand}"/>
+                    <r:RibbonButton Label="Export to Excel" Command="{Binding ExportToExcelCommand}"/>
+                </r:RibbonGroup>
+            </r:RibbonTab>
+            <r:RibbonTab Header="Help" Tag="Help">
+                <r:RibbonGroup Header="Support">
+                    <r:RibbonButton Label="Contact Support" Command="{Binding ContactSupportCommand}"/>
+                </r:RibbonGroup>
+            </r:RibbonTab>
+            <r:RibbonTab Header="Plugins" Tag="Plugins">
+                <r:RibbonGroup Header="Plugins">
+                    <r:RibbonButton Label="Toggle Plugin" Command="{Binding TogglePluginCommand}"/>
+                </r:RibbonGroup>
+            </r:RibbonTab>
+        </r:Ribbon>
+
+        <!-- Main Content -->
+        <ContentControl x:Name="MainContentControl" Grid.Row="1" Content="{Binding CurrentView}"/>
+    </Grid>
+</Window>
